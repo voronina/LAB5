@@ -13,7 +13,6 @@
 
 using namespace std;
 
-#include "box.h"
+#include "objects.h"
 
-
-vector<PLANE> initialize_box( void );
+vector<PLANE> initialize_box();

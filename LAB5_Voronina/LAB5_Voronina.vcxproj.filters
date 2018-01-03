@@ -26,7 +26,7 @@
     <ClInclude Include="header.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="box.h">
+    <ClInclude Include="objects.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
