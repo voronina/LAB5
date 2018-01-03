@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="print_geo.cpp" />
     <ClCompile Include="source.cpp" />
+    <ClCompile Include="starter_location.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="objects.h" />

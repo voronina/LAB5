@@ -6,7 +6,7 @@ solid box4 = plane (10.000000,1,1;1,0,0) -bc=22;
 solid box5 = plane (1,10.000000,1;0,1,0) -bc=15; 
 solid box6 = plane (1,1,9.600000;0,0,1) -bc=19;
 solid box = box1 and box2 and box3 and box4 and box5 and box6;
-solid plastina2 =
+solid plastina2 = 
 plane (0, 0, 0; -1, 0, 0) and plane (0, 0, 0; 0, -1, 0)
 and plane (0, 0, 0; 0, 0, -1) and plane (10.000000, 1, 1; 1, 0, 0)
 and plane (1, 10.000000, 1; 0, 1, 0) and plane (1, 1, 3.000000; 0, 0, 1);

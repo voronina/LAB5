@@ -1,5 +1,4 @@
 algebraic3d
-
 solid box1= plane(0,0,0;0,0,-1);
 solid box2= plane(0,0,0;0,-1,0);
 solid box3= plane(0,0,0;-1,0,0);

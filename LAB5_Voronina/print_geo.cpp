@@ -8,13 +8,9 @@ void PLANE::print_plane(ofstream &fout, string obj_name, int obj_num, int in_num
 	if ( in_num == -1 ) 	fout << SO << obj_name << obj_num << " = plane(";
 	else fout << SO << obj_name << obj_num << in_num << " = plane(";
 
-	int N = 6;
-	for (int j = 0; j < N; j++)
-	{
-		fout << param[j];
-		if (j != N / 2 - 1 && j < N - 1) fout << ", ";
-		else if (j == N / 2 - 1 && j < N - 1)  fout << "; ";
-	}
+	fout << point[0] << ", " << point[1] << ", " << point[2] << "; ";
+	fout << vect[0] << ", " << vect[1] << ", " << vect[2] ;
+
 	fout << BC << bc << ";" << endl;
 }
 

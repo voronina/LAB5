@@ -1,12 +1,13 @@
 // Составляющие куба
 class PLANE {
 public:
-	vector<double> param;
+	vector<double> point;	
+	vector<double> vect;
 	int bc = 1;
 
-	PLANE(vector<double> new_param, int new_bc) : param(new_param), bc(new_bc) {};
+	PLANE(vector<double> new_point, vector<double> new_vect, int new_bc) : point(new_point), vect(new_vect), bc(new_bc) {};
 
-
+	// Вывод в GEO одной плоскости
 	void print_plane (ofstream &fout, string obj_name, int obj_num, int in_num);
 };
 
@@ -15,9 +16,19 @@ class BOX {
 public:
 	string str = "box";
 	vector<PLANE> P;
+	vector<double> ST;
+	vector<double> END;
 
-	BOX(vector<PLANE> new_P) : P(new_P) {};
+	BOX(vector<PLANE> new_P) : P(new_P) 
+	{
+		ST = P[0].point;
+		END = P[3].point;	
+	};
 
+	// Необходимое количество трубок
+	int get_amo(double R, double PER);
+
+	// Вывод в GEO данных о теле
 	void print_boxes(ofstream &fout);
 };
 
@@ -29,6 +40,8 @@ public:
 	vector<double> O1;
 	vector<double> O2;
 	int bc = 1;
+
+	// ВОТ СЮДА ДОПИСЫВАТЬ ПАРАМЕТРЫ ДЛЯ УРАВНЕНИЯ ПРЯМОЙ
 
 	CYL(vector<double> new_O1, vector<double> new_O2, int new_bc) : O1(new_O1), O2(new_O2), bc(new_bc) {};
 
