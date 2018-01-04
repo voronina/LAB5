@@ -1,6 +1,4 @@
 ﻿  source.cpp
-c:\users\полина\desktop\lab5\lab5_voronina\source.cpp(67): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-c:\users\полина\desktop\lab5\lab5_voronina\source.cpp(104): warning C4804: ~: небезопасное использование типа "bool" в операции
-c:\users\полина\desktop\lab5\lab5_voronina\source.cpp(105): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\полина\desktop\lab5\lab5_voronina\source.cpp(52): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   LAB5_Voronina.vcxproj -> C:\Users\Полина\Desktop\LAB5\lab5_Voronina\Debug\LAB5_Voronina.exe
   LAB5_Voronina.vcxproj -> C:\Users\Полина\Desktop\LAB5\lab5_Voronina\Debug\LAB5_Voronina.pdb (Partial PDB)

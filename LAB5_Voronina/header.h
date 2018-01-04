@@ -17,7 +17,8 @@ using namespace std;
 #include "objects.h"
 
 #define EPS 100
+#define AA 4
 
 vector<PLANE> initialize_box();
-FBR initialize_fibers(FBR F, BOX B, int AMO);
+
 bool check_new(FBR F, BOX B, double x, double y);

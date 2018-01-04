@@ -25,14 +25,28 @@ public:
 		END = P[3].point;	
 	};
 
-	// Необходимое количество трубок
-	int get_amo(double R, double PER);
+
 
 	// Вывод в GEO данных о теле
 	void print_boxes(ofstream &fout);
+	
 };
 
 
+// Класс сетки
+class MESH {
+public:
+	int AMO;
+	int step_on_side1, step_on_side2;
+	int delta;
+
+	MESH(BOX B, double R, double PER) { get_params(B, R, PER); };
+
+	// Необходимое количество трубок
+	void get_params(BOX B, double R, double PER);
+	//  Получение шага дробления
+	void step_and_delta();
+};
 
 // Трубка
 class CYL {
@@ -60,6 +74,8 @@ public:
 	double T; // Толщина стенок трубок
 
 	FBR(double new_RC, double new_T) : RC(new_RC), T(new_T) { RH = RC - T; };
+
+	bool start_placing(BOX B, MESH M);
 
 	void print_cyl(ofstream &fout, string obj_name, int obj_num);
 	void print_cyl_with_hole(ofstream &fout, int obj_num);
