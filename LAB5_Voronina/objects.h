@@ -1,31 +1,32 @@
 // Составляющие куба
 class PLANE {
 public:
-	vector<double> point;	
-	vector<double> vect;
+	POINT p;	
+	vector<double> v;
 	int bc = 1;
 
-	PLANE(vector<double> new_point, vector<double> new_vect, int new_bc) : point(new_point), vect(new_vect), bc(new_bc) {};
+	PLANE(POINT new_point, vector<double> new_vect, int new_bc) : p(new_point), v(new_vect), bc(new_bc) {};
 
 	// Вывод в GEO одной плоскости
 	void print_plane (ofstream &fout, string obj_name, int obj_num, int in_num);
 };
+
 
 // Куб
 class BOX {
 public:
 	string str = "box";
 	vector<PLANE> P;
-	vector<double> ST;
-	vector<double> END;
+	POINT ST, END;
 
-	BOX(vector<PLANE> new_P) : P(new_P) 
+	BOX()
 	{
-		ST = P[0].point;
-		END = P[3].point;	
+		initialize_box();
+		ST = P[0].p;
+		END = P[3].p;	
 	};
 
-
+	void initialize_box();
 
 	// Вывод в GEO данных о теле
 	void print_boxes(ofstream &fout);
@@ -39,11 +40,18 @@ public:
 	int AMO;
 	int step_on_side1, step_on_side2;
 	int delta;
+	int** map;
 
-	MESH(BOX B, double R, double PER) { get_params(B, R, PER); };
+	MESH(BOX B, double R, double PER) 
+	{ 
+		get_params(B, R, PER); 
+		get_map();
+	};
 
 	// Необходимое количество трубок
 	void get_params(BOX B, double R, double PER);
+	void get_map();
+
 	//  Получение шага дробления
 	void step_and_delta();
 };
@@ -51,14 +59,17 @@ public:
 // Трубка
 class CYL {
 public:
-	vector<double> O1;
-	vector<double> O2;
+	POINT O1, O2;
+	LINE L;
 	int bc = 1;
 
-	// ВОТ СЮДА ДОПИСЫВАТЬ ПАРАМЕТРЫ ДЛЯ УРАВНЕНИЯ ПРЯМОЙ
+	CYL(POINT new_O1, POINT new_O2, int new_bc) : O1(new_O1), O2(new_O2), bc(new_bc) {	cyl_refresh(); };
 
-	CYL(vector<double> new_O1, vector<double> new_O2, int new_bc) : O1(new_O1), O2(new_O2), bc(new_bc) {};
-
+	void cyl_refresh()
+	{
+		L.M = O1; L.N = O2;
+		L.line_refresh();
+	}
 };
 
 

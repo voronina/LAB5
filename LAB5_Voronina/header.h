@@ -14,11 +14,9 @@
 
 using namespace std;
 
+#include "geometry.h"
 #include "objects.h"
 
 #define EPS 100
+#define E 0.00001
 #define AA 4
-
-vector<PLANE> initialize_box();
-
-bool check_new(FBR F, BOX B, double x, double y);

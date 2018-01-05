@@ -8,8 +8,8 @@ void PLANE::print_plane(ofstream &fout, string obj_name, int obj_num, int in_num
 	if ( in_num == -1 ) 	fout << SO << obj_name << obj_num << " = plane(";
 	else fout << SO << obj_name << obj_num << in_num << " = plane(";
 
-	fout << point[0] << ", " << point[1] << ", " << point[2] << "; ";
-	fout << vect[0] << ", " << vect[1] << ", " << vect[2] ;
+	fout << p.x << ", " << p.y << ", " << p.z << "; ";
+	fout << v[0] << ", " << v[1] << ", " << v[2] ;
 
 	fout << BC << bc << ";" << endl;
 }
@@ -32,8 +32,8 @@ void FBR::print_cyl(ofstream &fout, string obj_name, int obj_num)
 {
 	fout << SO << obj_name << "_" << obj_num+1 << " = cylinder(";
 
-	fout << C[obj_num].O1[0] << ", " << C[obj_num].O1[1] << ", " << C[obj_num].O1[2] << "; ";
-	fout << C[obj_num].O2[0] << ", " << C[obj_num].O2[1] << ", " << C[obj_num].O2[2] << "; ";
+	fout << C[obj_num].O1.x << ", " << C[obj_num].O1.y << ", " << C[obj_num].O1.z << "; ";
+	fout << C[obj_num].O2.x << ", " << C[obj_num].O2.y << ", " << C[obj_num].O2.z << "; ";
 
 	if (obj_name == "cyl") fout << RC;
 	else fout << RH;

@@ -1,22 +1,27 @@
 #include "header.h"
 
-void main()
+int main()
 {
-	double R = 0.2;		// Радиус трубки
+	double R = 0.2;			// Радиус трубки
 	double T = 0.01;		// Толщина стенки трубки
-	double PER = 0.2;		// Процентное содержание трубок
+	double PER = 0.1;		// Процентное содержание трубок
+	double angle = 5;		// Угол наклона
 
-	BOX B (initialize_box());
+	BOX B;
 	
 	MESH M(B, R, PER);
 
 	FBR F(R,T);
 
-	F.start_placing(B, M);
+	if (!F.start_placing(B, M)) return 1;
 
-	cout << "SIZE = " << F.C.size() << endl;
+	/*F.C[1].O2.x += 1;
+	F.C[1].O2.y += 1;
+	F.C[1].cyl_refresh();*/
 
-	OBJ O(F, B.str);
+	cout << "DIST = " << F.C[1].L.min_dist(F.C[0].L) << endl;
+
+	/*OBJ O(F, B.str);
 
 	ofstream fout;
 	fout.open("D://output.geo");
@@ -26,11 +31,11 @@ void main()
 	F.print_fbr(fout);
 	fout << endl;
 	O.print_obj(fout);
-	fout.close();
-
-	cout << "FIN" << endl;
+	fout.close();*/
 
 	system("PAUSE");
+
+	return 0;
 }
 
 
