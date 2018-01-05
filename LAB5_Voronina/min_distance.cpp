@@ -71,5 +71,20 @@ double LINE::non_parallel_dist(LINE L)
 	double mm = det(n, l, L.n, L.l);
 	double nn = det(l, m, L.l, L.m);
 
+	double d1 = det(m, n, mm, nn);
+	double d2 = det(n, l, nn, ll);
+	double d3 = det(l, m, ll, mm);
+
+	double p1 = -(d1 * M.x + d2 * M.y + d3 * M.z);
+
+	double d4 = det(L.m, L.n, mm, nn);
+	double d5 = det(L.n, L.l, nn, ll);
+	double d6 = det(L.l, L.m, ll, mm);
+
+	double p2 = -(d4 * L.M.x + d5 * L.M.y + d6 * L.M.z);
+
+
+	
+
 
 }
