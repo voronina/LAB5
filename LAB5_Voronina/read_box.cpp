@@ -14,6 +14,6 @@ void BOX::initialize_box(void)
 
 	for (int i = 0; i < 6; i++)
 	{
-		P.push_back(PLANE(POINT(M[i][0],M[i][1],M[i][2]), { M[i][3],M[i][4],M[i][5] }, 10));
+		P.push_back(PLANE(POINT(M[i][0],M[i][1],M[i][2]), VECT(M[i][3],M[i][4],M[i][5]), 10));
 	}
 }

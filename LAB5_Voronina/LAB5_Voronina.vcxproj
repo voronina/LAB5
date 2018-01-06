@@ -139,11 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="min_distance.cpp" />
+    <ClCompile Include="distance.cpp" />
+    <ClCompile Include="finish_location.cpp" />
     <ClCompile Include="print_geo.cpp" />
     <ClCompile Include="read_box.cpp" />
     <ClCompile Include="source.cpp" />
-    <ClCompile Include="starter_location.cpp" />
+    <ClCompile Include="start_location.cpp" />
+    <ClCompile Include="geometry.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="geometry.h" />

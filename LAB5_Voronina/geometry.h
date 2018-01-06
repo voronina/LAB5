@@ -7,6 +7,7 @@ public:
 	POINT(double new_x, double new_y, double new_z) : x(new_x), y(new_y), z(new_z) {};
 
 	double dist(POINT P);
+	bool point_with_shift(double alpha, double s, POINT ST, POINT END, double R);
 
 	void print_point()
 	{
@@ -14,27 +15,22 @@ public:
 	};
 };
 
-// Класс линии
-class LINE {
+// Класс вектора
+class VECT {
 public:
-	POINT M, N;
+	double x, y, z;
 
-	double l, m, n;
-	double under;
-	double cos_a, cos_b, cos_g;
-	
-	LINE() {};
-	LINE(POINT O1, POINT O2) : M(O1), N(O2) { line_refresh(); };
-
-	void line_refresh();
-	double min_dist(LINE L);
-
-	bool check_parallel(LINE L);
-	double parallel_dist(LINE L);
-
-	double det(double a, double b, double c, double d);
-	double non_parallel_dist(LINE L);
-
-	
+	VECT() {};
+	VECT(double new_x, double new_y, double new_z) : x(new_x), y(new_y), z(new_z) {};
 };
 
+// Класс отрезка
+class LINE {
+public:
+	POINT P0, P1;
+
+	LINE() {};
+	LINE(POINT O1, POINT O2) : P0(O1), P1(O2) { };
+
+	POINT middle();
+};

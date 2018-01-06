@@ -20,3 +20,7 @@ using namespace std;
 #define EPS 100
 #define E 0.00001
 #define AA 4
+#define M_PI 3.14159265358979323846
+#define TRY_AMO 100
+
+double dist3D_LINE_to_LINE(LINE S1, LINE S2);

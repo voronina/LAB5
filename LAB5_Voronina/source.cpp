@@ -2,10 +2,14 @@
 
 int main()
 {
-	double R = 0.2;			// Радиус трубки
+	double R = 0.1;			// Радиус трубки
 	double T = 0.01;		// Толщина стенки трубки
-	double PER = 0.1;		// Процентное содержание трубок
-	double angle = 5;		// Угол наклона
+	double PER = 0.3;		// Процентное содержание трубок
+	double angle = 10;		// Угол наклона
+
+	/*POINT A1(0, 0, 0);	POINT B1(0, 0, 5);	POINT A2(1, 4, 0);	POINT B2(1, 4, 5);
+	LINE S1(A1, B1);	LINE S2(A2, B2);
+	cout << "ANS = " << dist3D_LINE_to_LINE(S1, S2) << endl;*/
 
 	BOX B;
 	
@@ -13,15 +17,18 @@ int main()
 
 	FBR F(R,T);
 
-	if (!F.start_placing(B, M)) return 1;
+	if (!F.start_placing(B, M))
+	{
+		cout << "Error!" << endl;
+		system("PAUSE");
+		return 1;
+	}
 
-	/*F.C[1].O2.x += 1;
-	F.C[1].O2.y += 1;
-	F.C[1].cyl_refresh();*/
+	F.cyl_tilt(angle, M, B);
 
-	cout << "DIST = " << F.C[1].L.min_dist(F.C[0].L) << endl;
+	OBJ O(F, B.str);
 
-	/*OBJ O(F, B.str);
+	system("PAUSE");
 
 	ofstream fout;
 	fout.open("D://output.geo");
@@ -31,7 +38,7 @@ int main()
 	F.print_fbr(fout);
 	fout << endl;
 	O.print_obj(fout);
-	fout.close();*/
+	fout.close();
 
 	system("PAUSE");
 

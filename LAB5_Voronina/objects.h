@@ -2,10 +2,10 @@
 class PLANE {
 public:
 	POINT p;	
-	vector<double> v;
+	VECT v;
 	int bc = 1;
 
-	PLANE(POINT new_point, vector<double> new_vect, int new_bc) : p(new_point), v(new_vect), bc(new_bc) {};
+	PLANE(POINT new_point, VECT new_vect, int new_bc) : p(new_point), v(new_vect), bc(new_bc) {};
 
 	// Вывод в GEO одной плоскости
 	void print_plane (ofstream &fout, string obj_name, int obj_num, int in_num);
@@ -54,22 +54,20 @@ public:
 
 	//  Получение шага дробления
 	void step_and_delta();
+
+	vector<int> neighbors(int i); 
+	bool check_nei(int i, int j);
 };
 
 // Трубка
 class CYL {
 public:
-	POINT O1, O2;
 	LINE L;
 	int bc = 1;
 
-	CYL(POINT new_O1, POINT new_O2, int new_bc) : O1(new_O1), O2(new_O2), bc(new_bc) {	cyl_refresh(); };
+	CYL(POINT new_O1, POINT new_O2, int new_bc) : bc(new_bc) {	cyl_refresh(new_O1, new_O2); };
 
-	void cyl_refresh()
-	{
-		L.M = O1; L.N = O2;
-		L.line_refresh();
-	}
+	void cyl_refresh(POINT new_O1, POINT new_O2) { L.P0 = new_O1; L.P1 = new_O2; }
 };
 
 
@@ -87,6 +85,8 @@ public:
 	FBR(double new_RC, double new_T) : RC(new_RC), T(new_T) { RH = RC - T; };
 
 	bool start_placing(BOX B, MESH M);
+	bool cyl_tilt(double angle, MESH M, BOX B);
+	bool check_dist(LINE L1, LINE L2);
 
 	void print_cyl(ofstream &fout, string obj_name, int obj_num);
 	void print_cyl_with_hole(ofstream &fout, int obj_num);
