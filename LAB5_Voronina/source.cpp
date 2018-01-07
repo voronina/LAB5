@@ -2,9 +2,9 @@
 
 int main()
 {
-	double R = 0.1;			// Радиус трубки
-	double T = 0.01;		// Толщина стенки трубки
-	double PER = 0.3;		// Процентное содержание трубок
+	double R = 0.25;			// Радиус трубки
+	double T = 0.02;		// Толщина стенки трубки
+	double PER = 0.56;		// Процентное содержание трубок
 	double angle = 10;		// Угол наклона
 
 	/*POINT A1(0, 0, 0);	POINT B1(0, 0, 5);	POINT A2(1, 4, 0);	POINT B2(1, 4, 5);
@@ -28,7 +28,7 @@ int main()
 
 	OBJ O(F, B.str);
 
-	system("PAUSE");
+	//system("PAUSE");
 
 	ofstream fout;
 	fout.open("D://output.geo");

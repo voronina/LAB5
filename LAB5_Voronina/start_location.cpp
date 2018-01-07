@@ -2,7 +2,7 @@
 
 void MESH::get_params(BOX B, double R, double PER)
 {
-	double SC = M_PI * pow(R, 2);
+	double SC = M_PI * R * R;
 	double SB = B.END.x * B.END.y;
 	double SPER = SB * PER;
 	AMO = SPER/SC + 1;
@@ -28,14 +28,15 @@ void MESH::step_and_delta()
 		if (i%2 == 0) step_on_side1++;
 		else step_on_side2++;
 		delta = AMO - step_on_side1*step_on_side2;
+		i++;
 	}
 	
 	delta = abs(delta);
 
 	
 	cout << "AMO = " << AMO << endl;
-	cout << "step_on_side1 = " << step_on_side1 << endl;
-	cout << "step_on_side2 = " << step_on_side2 << endl;
+	cout << "after step_on_side1 = " << step_on_side1 << endl;
+	cout << "after step_on_side2 = " << step_on_side2 << endl;
 	cout << "delta = " << delta << endl;
 }
 
@@ -74,13 +75,21 @@ bool FBR::start_placing(BOX B, MESH M)
 	// Параметры для стороны i
 	int N_i = M.step_on_side1;
 	double step_i = abs(B.END.x - B.ST.x) / N_i;
-	if (step_i <= 3 * RC) return false;
+	if (step_i <= 2 * RC)
+	{
+		cout << "1!!! step_i = " << step_i << endl;
+		return false;
+	}
 	double A_i, B_i;
 
 	// Параметры для стороны j
 	int N_j = M.step_on_side2;
 	double step_j = abs(B.END.y - B.ST.y) / N_j;
-	if (step_i <= 3 * RC) return false;
+	if (step_j <= 2 * RC)
+	{
+		cout << "2!!!" << endl;
+		return false;
+	}
 	double A_j, B_j;
 
 	double x, y;

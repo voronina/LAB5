@@ -15,14 +15,20 @@ POINT LINE::middle() { return POINT( ((P0.x + P1.x) / 2), ((P0.y + P1.y) / 2), (
 // Перемещение точки на указанный сдвиг
 bool POINT::point_with_shift(double alpha, double s, POINT ST, POINT END, double R)
 {
-	x = x + s*cos(alpha);
-	y = y + s*sin(alpha);
+	x = x + s*cos(alpha * M_PI / 180);
+	y = y + s*sin(alpha * M_PI / 180);
 
-	if (x < ST.x + 1.001 * R || x > END.x - 1.001 * R) return false;
-	if (y < ST.y + 1.001 * R || y > END.y - 1.001 * R) return false;
-	if (z < ST.z + 1.001 * R || z > END.z - 1.001 * R) return false;
+	/*print_point();
+	system("PAUSE");*/
+	/*cout << " ST.x + 1.01*R = " << ST.x + 1.01*R << endl;
+	cout << " ST.y + 1.01*R = " << ST.y + 1.01*R << endl;
 
-	return true;
+	cout << " END.x - 1.01*R = " << END.x - 1.01*R << endl;
+	cout << " END.y - 1.01*R = " << END.y - 1.01*R << endl;*/
+
+	if ( abs(x-(ST.x+ 1.01*R))<E &&  abs(x-(END.x- 1.01*R))<E  && abs(y-(ST.y+ 1.01*R))<E && abs(y-(END.y- 1.01*R))<E ) return true;
+
+	return false;
 }
 
 

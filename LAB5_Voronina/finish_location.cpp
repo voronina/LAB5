@@ -14,11 +14,15 @@ bool FBR::cyl_tilt(double angle, MESH M, BOX B)
 	vector<int> neig;
 	bool flag = false;
 	int step = 0;
+	POINT K0, K1;
 
 	srand(time(NULL));
 
 	for (int i = 0; i < C.size(); i++)
 	{
+		K0 = C[i].L.P0;
+		K1 = C[i].L.P1;
+
 		while (!flag && step < TRY_AMO)
 		{
 			flag = true;
@@ -44,12 +48,18 @@ bool FBR::cyl_tilt(double angle, MESH M, BOX B)
 
 			neig = M.neighbors(i);
 			for (int j = 0; j < neig.size(); j++) if (!check_dist(C[i].L, C[neig[j]].L)) flag = false;
-			step++;
+			
+			if (!flag)
+			{
+				C[i].L.P0 = K0;
+				C[i].L.P1 = K1;
+				step++;
+			}
 		}
 
 		flag = false;
 		step = 0;
-		//cout << "i = " << i << " a = " << a << " sh = " << sh << endl;
+		cout << "i = " << i << " a = " << a << " sh = " << sh << endl;
 	}
 
 	return true;
@@ -57,7 +67,7 @@ bool FBR::cyl_tilt(double angle, MESH M, BOX B)
 
 bool FBR::check_dist(LINE L1, LINE L2)
 {
-	if (dist3D_LINE_to_LINE(L1, L2) - 2 * 1.001*RC < E) return false;
+	if ( (dist3D_LINE_to_LINE(L1, L2) - 2 * 1.001*RC) < E) return false;
 	return true;
 }
 
